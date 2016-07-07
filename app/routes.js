@@ -29,7 +29,8 @@ var Nerd = require('./models/nerd');
 
         //frontend routes ===
         //route to handle angular requests
-        app.get('*', function(req, res)
+        //catch-all route
+        app.get('*', function(req, res) {
         //perhaps should be sendFile? note if doesn't work
             res.sendfile('./public/views/index.html'); // loads public/index.html file to route url
         });
