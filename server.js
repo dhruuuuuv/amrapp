@@ -3,6 +3,11 @@ var express         = require('express');
 var app             = express();
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
+var mongoose        = require('mongoose');
+
+mongoose.connect('mongodb://dhruv:amr@ds015995.mlab.com:15995/cowllection'); //connect to database
+
+var Nerd            = require('./app/models/nerd');
 
 //config ===
 
@@ -34,14 +39,27 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 
 // routes ===
-require('./app/routes')(app);
+// require('./app/routes')(app);
+
+//routes for api ===
+var router = express.Router(); // get instance of express Router
+
+router.get('/', function(req, res) {
+    res.json({ message: 'hooray! welcome to our api!' });
+});
+
+//add more api magic below
+
+//register routes
+// all routes are prefixed with /api
+app.use('/api', router);
 
 //start app ===
 //at http://localhost:8080
 app.listen(port);
 
 //shout to user
-console.log('Magc happens on port ' + port);
+console.log('Magic happens on port ' + port);
 
 //expose app
 exports = module.exports = app;
