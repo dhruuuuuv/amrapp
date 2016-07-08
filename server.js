@@ -47,17 +47,62 @@ var router = express.Router(); // get instance of express Router
 //middleware for all reqs
 router.use(function(req, res, next) {
     //log
-    console.log('something is happening');
+    console.log("communicating with API");
     next(); //go to next routes
 });
 
 //test route to see if working
 //at GET http://localhost:8080/api
 router.get('/', function(req, res) {
+    //sending back as json
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
 //add more api magic below
+
+//routes for /nerds === ===
+router.route('/nerds')
+
+    //make a nerd (@ POST localhost:8080/api/nerds)
+    .post(function(req, res) {
+
+        var nerd = new Nerd(); //new nerd model instance
+        nerd.name = req.body.name; //set nerd name
+
+        //save nerd and check for errors
+        nerd.save(function(err) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.json({ message: 'Nerd created!' });
+        });
+    })
+
+    //get all nerds @ localhost:8080/api/nerds
+    .get(function(req, res) {
+        Nerd.find(function(err, nerds) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.json(nerds);
+        });
+    });
+
+//routes for /nerds/:nerd_id ===
+router.route('/nerds/:nerd_id')
+
+    //get nerd with id @ localhost:8080/api/nerds/:nerd_id
+    .get(function(req, res) {
+        Nerd.findById(req.params.nerd_id, function(err, nerd) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.json(nerd);
+        });
+    });
 
 //register routes ===
 // all routes are prefixed with /api
