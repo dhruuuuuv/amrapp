@@ -38,19 +38,28 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 //set static files location, eg /public/img is /img for users
 app.use(express.static(__dirname + '/public'));
 
-// routes ===
+// routes === move routes to below doc once discrepancies are sorted?
 // require('./app/routes')(app);
 
 //routes for api ===
 var router = express.Router(); // get instance of express Router
 
+//middleware for all reqs
+router.use(function(req, res, next) {
+    //log
+    console.log('something is happening');
+    next(); //go to next routes
+});
+
+//test route to see if working
+//at GET http://localhost:8080/api
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
 //add more api magic below
 
-//register routes
+//register routes ===
 // all routes are prefixed with /api
 app.use('/api', router);
 
