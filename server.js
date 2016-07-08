@@ -102,6 +102,43 @@ router.route('/nerds/:nerd_id')
 
             res.json(nerd);
         });
+    })
+
+    //update nerd with id PUT @ localhost:8080/api/nerds/:nerd_id
+    .put(function(req, res) {
+
+        //use nerd model to find nerd
+        Nerd.findById(req.params.nerd_id, function(err, nerd) {
+
+            if (err) {
+                res.send(err);
+            }
+
+            nerd.name = req.body.name; // update the nerd info
+
+            // save nerd
+            nerd.save(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+
+                res.json({ message: 'Nerd updated!' });
+            });
+        });
+
+    })
+
+    //delete nerd with id @ DELETE localhost:8080/api/nerds/:nerd_id
+    .delete(function(req, res) {
+        Nerd.remove({
+            _id: req.params.nerd_id
+        }, function(err, nerd) {
+            if (err) {
+                res.send(err);
+            }
+
+            res.json({message: 'sucessfully deleted' });
+        });
     });
 
 //register routes ===
