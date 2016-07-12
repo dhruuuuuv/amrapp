@@ -11,12 +11,12 @@ router.use(function(req, res, next) {
     next();
 });
 
-router.get('/', function(req, res) {
-    res.json({ message: 'welcome to our api!' });
-});
+// router.get('/', function(req, res) {
+//     res.json({ message: 'welcome to our api!' });
+// });
 
 //routes for /nerds ======
-router.route('/nerds')
+router.route('/')
 
     //make a nerd (@ POST localhost:8080/api/nerds)
     .post(function(req, res) {
@@ -46,7 +46,7 @@ router.route('/nerds')
     });
 
 //routes for /nerds/:nerd_id ===
-router.route('/nerds/:nerd_id')
+router.route('/:nerd_id')
 
     //get nerd with id @ localhost:8080/api/nerds/:nerd_id
     .get(function(req, res) {

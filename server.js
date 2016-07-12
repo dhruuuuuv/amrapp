@@ -7,7 +7,7 @@ var mongoose        = require('mongoose');
 
 mongoose.connect('mongodb://dhruv:amr@ds015995.mlab.com:15995/cowllection'); //connect to database
 
-var Nerd            = require('./app/models/nerd');
+// var Nerd            = require('./app/models/nerd');
 var nerds           = require('./app/nerds');
 
 //config ===
@@ -148,13 +148,13 @@ app.use('/api/nerds', nerds);
 // all routes are prefixed with /api
 // app.use('/api', router);
 //
-// //frontend routes ===
-// //route to handle angular requests
-// //catch-all route
-// app.get('*', function(req, res) {
-// //perhaps should be sendFile? note if doesn't work
-//     res.sendfile('./public/views/index.html'); // loads public/index.html file to route url
-// });
+//frontend routes ===
+//route to handle angular requests
+//catch-all route
+app.get('*', function(req, res) {
+//perhaps should be sendFile? note if doesn't work
+    res.sendfile('./public/views/index.html'); // loads public/index.html file to route url
+});
 
 //start app ===
 //at http://localhost:8080
