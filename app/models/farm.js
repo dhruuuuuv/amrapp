@@ -3,7 +3,7 @@ var mongoose    = require('mongoose');
 var Schema      = mongoose.Schema;
 
 var FarmSchema  = new Schema({
-    farm_id                 : Number,
+    farm_number             : Number,
     number_cows             : Number,
     number_samples_tested   : Number,
     isolates_samples        : Number,
