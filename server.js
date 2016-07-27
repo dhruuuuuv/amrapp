@@ -8,6 +8,7 @@ var mongoose        = require('mongoose');
 
 //import routing from app
 var nerds           = require('./app/nerds');
+var farms           = require('./app/farms');
 
 //config ===
 
@@ -39,6 +40,7 @@ app.use(express.static(__dirname + '/public'));
 
 // routes ===
 app.use('/api/nerds', nerds);
+app.use('/api/farms', farms);
 
 //frontend routes ===
 //route to handle angular requests
