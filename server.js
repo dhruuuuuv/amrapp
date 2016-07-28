@@ -55,7 +55,7 @@ app.get('*', function(req, res) {
 app.listen(port);
 
 //shout to user
-console.log('Magic happens on port ' + port);
+console.log('server open on port ' + port);
 
 //expose app
 exports = module.exports = app;

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <base href="/">
 
-    <title> AMR-app </title>
+    <title> Cow and Farm Database (prototype) </title>
 
     <!-- CSS files -->
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
@@ -17,14 +17,14 @@
 
   <!-- ANGULAR CUSTOM -->
   <script src="js/controllers/MainCtrl.js"> </script>
-  <script src="js/controllers/NerdCtrl.js"> </script>
-  <script src="js/services/NerdService.js"> </script>
+  <script src="js/controllers/FarmCtrl.js"> </script>
+  <script src="js/services/FarmService.js"> </script>
   <script src="js/appRoutes.js"> </script>
   <script src="js/app.js"> </script>
 
  </head>
 
- <body ng-app="sampleApp" ng-controller="NerdController">
+ <body ng-app="sampleApp" ng-controller="FarmController">
  <div class="container">
 
      <!-- HEADER -->
@@ -35,7 +35,7 @@
 
         <!-- LINK TO PAGES: ANGULAR DOES ROUTING -->
         <ul class="nav navbar-nav">
-            <li><a href="/nerds"> Nerds </a> </li>
+            <li><a href="/farms"> Farms </a> </li>
         </ul>
     </nav>
 
