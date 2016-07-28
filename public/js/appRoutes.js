@@ -10,8 +10,8 @@ $routeProvider
 
     //nerds page to use NerdController
     .when('/nerds', {
-        templateUrl: 'views/nerd.html',
-        controller: 'NerdController'
+        templateUrl: 'views/farm.html',
+        controller: 'FarmController'
     });
 
 $locationProvider.html5Mode(true);
