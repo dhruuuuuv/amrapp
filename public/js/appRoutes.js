@@ -8,8 +8,8 @@ $routeProvider
         controller: 'MainController'
     })
 
-    //nerds page to use NerdController
-    .when('/nerds', {
+    //farms page to use the FarmController
+    .when('/farms', {
         templateUrl: 'views/farm.html',
         controller: 'FarmController'
     });

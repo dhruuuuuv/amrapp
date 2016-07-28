@@ -1,3 +1,3 @@
-angular.module('FarmCtrl', []).controller('NerdController', function($scope) {
+angular.module('FarmCtrl', []).controller('FarmController', function($scope) {
     $scope.tagline = 'I am a test farm.';
 });
