@@ -37,6 +37,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 //set static files location, eg /public/img is /img for users
 app.use(express.static(__dirname + '/public'));
+// app.use('/public', express.static(__dirname + '/public'));
 
 // routes ===
 app.use('/api/nerds', nerds);
