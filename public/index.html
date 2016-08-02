@@ -24,7 +24,7 @@
 
  </head>
 
- <body ng-app="sampleApp" ng-controller="FarmController">
+ <body ng-app="sampleApp" ng-controller="MainController">
  <div class="container">
 
      <!-- HEADER -->
@@ -35,13 +35,14 @@
 
         <!-- LINK TO PAGES: ANGULAR DOES ROUTING -->
         <ul class="nav navbar-nav">
-            <li><a href="/farms"> Farms </a> </li>
+            <li><a href="/farms">Farms</a></li>
         </ul>
-    </nav>
+     </nav>
 
     <!-- ANGULAR DYNAMIC CONTENT GOES HERE -->
     <div ng-view></div>
 
-</div>
+ </div>
+
 </body>
 </html>

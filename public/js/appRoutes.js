@@ -1,20 +1,20 @@
 angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
-$routeProvider
+    $routeProvider
 
-    //homepage
-    .when('/', {
-        templateUrl: 'views/home.html'
-        controller: 'MainController'
-    })
+        //farms page to use the FarmController
+        .when('/farms', {
+            templateUrl: 'views/farm.html',
+            controller: 'FarmController'
+        })
 
-    //farms page to use the FarmController
-    .when('/farms', {
-        templateUrl: 'views/farm.html',
-        controller: 'FarmController'
-    });
+        // homepage
+        // .when('/', {
+        //     templateUrl: 'views/home.html'
+        //     controller: 'MainController'
+        // });
 
-$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
 
 }]);
