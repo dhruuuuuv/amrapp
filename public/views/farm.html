@@ -1,13 +1,13 @@
 <div class="jumbotron text-center">
-    <h1> I am an example farm </h1>
+    <h1> This lists the farms currently in the database </h1>
 
-    <p> {{ tagline }} </p>
+    <!-- <p> {{ tagline }} </p>
 
-    <p> {{ farms }} </p>
+    <p> {{ farms }} </p> -->
 
-    <!-- <div ng-repeat="farm in farms">
+    <div ng-repeat="farm in farms | orderBy: '-farm_number'">
         {{farm}}
-    </div> -->
+    </div>
 
     <!-- <button ng-click="add_farm()"> Add Farm </button> -->
 
