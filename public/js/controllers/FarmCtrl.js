@@ -1,9 +1,8 @@
 angular.module('FarmCtrl', []).controller('FarmController', [
     '$scope',
-    'farms',
-    'farm',
-     function($scope, farms) {
+    'Farm',
+     function($scope, Farm) {
         $scope.tagline = 'I am a test farm.';
-        $scope.farm = farm;
+        $scope.farm = Farm;
     }
 ]);

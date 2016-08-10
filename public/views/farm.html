@@ -5,8 +5,8 @@
 
     <p> {{ farms }} </p> -->
 
-    <div ng-repeat="farm in farms | orderBy: '-farm_number'">
-        {{farm}}
+    <div ng-repeat="farm in farms">
+        {{farm.farm_number}}
     </div>
 
     <!-- <button ng-click="add_farm()"> Add Farm </button> -->

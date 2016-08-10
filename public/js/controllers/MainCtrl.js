@@ -1,9 +1,9 @@
 angular.module('MainCtrl', []).controller('MainController', [
     '$scope',
-    'farms',
-     function($scope, farms) {
+    'Farm',
+     function($scope, Farm) {
         $scope.tagline = 'I am the main controller!';
-        $scope.farms = farms.farms;
+        $scope.farms = Farm.farms;
 
         $scope.addFarm = function() {
             if (!$scope.farm_number || $scope.farm_number === '' ) {
@@ -11,7 +11,7 @@ angular.module('MainCtrl', []).controller('MainController', [
             }
 
             farms.create({
-                farm_number = $scope.farm_number,
+                farm_number: $scope.farm_number,
             });
 
             $scope.farm_number = '';

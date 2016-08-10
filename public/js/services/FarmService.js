@@ -24,9 +24,11 @@ angular.module('FarmService', []).factory('Farm', ['$http', function($http) {
 
     o.delete = function(id) {
         return $http.delete('/api/farms/' + id).success(function(data){
-            console.log('deleted farm id ' + data);     
+            console.log('deleted farm id ' + data);
         });
     };
+
+    return o;
 
     // return {
     //     //call to get all farms
