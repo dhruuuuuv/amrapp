@@ -1,14 +1,28 @@
-<div class="jumbotron text-center">
-    <h1> This lists the farms currently in the database </h1>
-
-    <!-- <p> {{ tagline }} </p>
-
-    <p> {{ farms }} </p> -->
-
-    <div ng-repeat="farm in farms | orderBy: '-farm_number'">
-        {{farm}}
-    </div>
-
-    <!-- <button ng-click="add_farm()"> Add Farm </button> -->
-
+<div class="page-header">
+    <h2>
+            {{farm.farm_number}}
+    </h2>
 </div>
+
+<!-- <div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+    <span class="glyphicon glyphicon-thumbs-up"
+        ng-click="incrementUpvotes(comment)"></span>
+    {{comment.upvotes}} - by {{comment.author}}
+
+    <span style="font-size:20px; margin-left:10px;">
+        {{comment.body}}
+    </span>
+</div> -->
+
+<!-- <form ng-submit="addComment()"
+style="margin-top:30px;">
+    <h3> add a new comment </h3>
+
+    <div class="form-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Comment"
+        ng-model="body"></input>
+    </div>
+    <button type="submit" class="btn btn-primary"> POST </button>
+</form> -->

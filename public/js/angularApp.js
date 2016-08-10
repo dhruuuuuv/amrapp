@@ -24,7 +24,7 @@ app.config([
                 templateUrl: 'views/farm.html',
                 controller: 'FarmCtrl',
                 resolve: {
-                    farm: ['$stateParams', 'farms' function($stateParams, farms) {
+                    farm: ['$stateParams', 'farms', function($stateParams, farms) {
                         return farms.get($stateParams.id);
                     }]
                 }
