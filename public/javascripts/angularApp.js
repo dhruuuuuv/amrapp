@@ -9,7 +9,7 @@ app.config([
         $stateProvider
 
             .state('home', {
-                url: '/home.html',
+                url: '/home',
                 templateUrl: '/home.html',
                 controller: 'MainCtrl',
                 resolve: {
@@ -20,12 +20,12 @@ app.config([
             })
 
             .state('farms', {
-                url: '/farms/{id}',
-                templateUrl: 'farms.html',
-                controller: 'FarmCtrl',
+                url: '/farms/{farm_number}',
+                templateUrl: '/farms.html',
+                controller: 'FarmsCtrl',
                 resolve: {
                     farm: ['$stateParams', 'farms', function($stateParams, farms) {
-                        return farms.get($stateParams.id);
+                        return farms.get($stateParams.farm_number);
                     }]
                 }
             });
@@ -44,25 +44,25 @@ app.factory('farms', ['$http',
         };
 
         o.getAll = function() {
-            return $http.get('/api/farms').success(function(data){
+            return $http.get('/farms').success(function(data){
                 angular.copy(data, o.farms);
             });
         };
 
         o.create = function(farm) {
-            return $http.post('/api/farms', farm).success(function(data){
+            return $http.post('/farms', farm).success(function(data){
                 o.farms.push(data);
             });
         };
 
-        o.get = function(id) {
-            return $http.get('/api/farms/' + id).then(function(res){
+        o.get = function(farm_number) {
+            return $http.get('/farms/' + farm_number).then(function(res){
                 return res.data;
             });
         };
 
-        o.delete = function(id) {
-            return $http.delete('/api/farms/' + id).success(function(data){
+        o.delete = function(farm_number) {
+            return $http.delete('/farms/' + farm_number).success(function(data){
                 console.log('deleted farm id ' + data);
             });
         }
@@ -75,7 +75,7 @@ app.controller('MainCtrl', [
     '$scope',
     'farms',
     function($scope, farms) {
-        $scope.tagline = 'Hello world!';
+        $scope.test = 'Hello world!';
         $scope.farms = farms.farms;
 
         $scope.addFarm = function() {
@@ -83,8 +83,8 @@ app.controller('MainCtrl', [
                 return;
             }
 
-            Farm.create({
-                farm_number: $scope.farm_number,
+            farm.create({
+                farm_number: $scope.farm_number
             });
 
             $scope.farm_number = '';
@@ -97,7 +97,7 @@ app.controller('FarmsCtrl', [
     'farms',
     'farm',
     function($scope, farms) {
-        $scope.farms = farm;
+        $scope.farm = farm;
 
         $scope.tagline = 'I am a test farm.';
     }
