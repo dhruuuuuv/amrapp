@@ -9,7 +9,7 @@ app.config([
         $stateProvider
 
             .state('home', {
-                url: '/',
+                url: '/home.html',
                 templateUrl: 'views/home.html',
                 controller: 'MainCtrl',
                 resolve: {
