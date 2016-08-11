@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <base href="/">
+
+    <title> Cowllection </title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
+    <!-- JS -->
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- ANGULAR CUSTOM -->
+    <script src="js/angularApp.js"> </script>
+
+ </head>
+
+<!-- app setup and bootstrap config -->
+<body ng-app="cowllection">
+
+     <h1> cowllection </h1>
+     <div class="row">
+         <div class="col-md-6 col-md-offset-3">
+             <ui-view></ui-view>
+         </div>
+     </div>
+
+<!-- home template angular -->
+
+    <script type="text/ng-template" id="/home.html">
+
+        <div class="page-header">
+            <h1> cowllection </h1>
+
+            <div ng-repeat="farm in farms">
+
+                <span style="font-size:20px; margin-left:10px;">
+                        {{ farm.farm_number }}
+                </span>
+
+            </div>
+
+            <form ng-submit="addFarm()" style="margin-top:30px;">
+                <h3> add a new farm </h3>
+
+                <div class="form-group">
+                    <input type="text"
+                        class="form-control"
+                        placeholder="Farm Number"
+                        ng-model="farm_number">
+                    </input>
+                </div>
+
+                <!-- <div class="form-group">
+                    <input type="text"
+                        class="form-control"
+                        placeholder="Link"
+                        ng-model="link">
+                    </input>
+                </div> -->
+
+                <button type="submit" class="btn btn-primary"> SUBMIT </button>
+            </form>
+        </div>
+    </script>
+
+<!-- farms template angular -->
+
+    <script type="text/ng-template" id="/farms.html">
+
+        <div class="page-header">
+            <h2>
+                    {{farm.farm_number}}
+            </h2>
+        </div>
+
+    </script>
+
+</body>
+
+</html>
