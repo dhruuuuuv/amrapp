@@ -104,9 +104,7 @@ router.put('/farms/:farm_number', function(req, res, next) {
 });
 
 router.delete('/farms/:farm_number', function(req, res, next) {
-    Farm.remove({
-        'farm_number' : req.params.farm_number
-    }, function(err, farm) {
+    Farm.findOne({ 'farm_number' : req.params.farm_number }, function(err, farm), function(err, farm) {
         if (err) {
             return next(err);
         }

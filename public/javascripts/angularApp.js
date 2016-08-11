@@ -84,10 +84,60 @@ app.controller('MainCtrl', [
             }
 
             farms.create({
-                farm_number: $scope.farm_number
+                // farm_number: $scope.farm_number
+                farm_number             : $scope.farm_number,
+                number_cows             : $scope.number_cows,
+                number_samples_tested   : $scope.number_samples_tested,
+                isolates_samples        : $scope.isolates_samples,
+                esbl_isolates           : $scope.esbl_isolates,
+                multidrug_res_isolates  : $scope.multidrug_res_isolates,
+                amr_SXT                 : $scope.amr_SXT,
+                amr_CAZ                 : $scope.amr_CAZ,
+                amr_TE                  : $scope.amr_TE,
+                amr_EFT                 : $scope.amr_EFT,
+                amr_CIP                 : $scope.amr_CIP,
+                amr_CTX                 : $scope.amr_CTX,
+                amr_FOX                 : $scope.amr_FOX,
+                amr_AML                 : $scope.amr_AML,
+                amr_NA                  : $scope.amr_NA,
+                amr_IPM                 : $scope.amr_IPM,
+                amr_C                   : $scope.amr_C,
+                amr_P                   : $scope.amr_P,
+                amr_CL                  : $scope.amr_CL,
+                amr_AMC                 : $scope.amr_AMC,
+                amr_S                   : $scope.amr_S
             });
 
+            // $scope.farm_number = '';
+            $scope.farm_number             = '';
+            $scope.number_cows             = '';
+            $scope.number_samples_tested   = '';
+            $scope.isolates_samples        = '';
+            $scope.esbl_isolates           = '';
+            $scope.multidrug_res_isolates  = '';
+            $scope.amr_SXT                 = '';
+            $scope.amr_CAZ                 = '';
+            $scope.amr_TE                  = '';
+            $scope.amr_EFT                 = '';
+            $scope.amr_CIP                 = '';
+            $scope.amr_CTX                 = '';
+            $scope.amr_FOX                 = '';
+            $scope.amr_AML                 = '';
+            $scope.amr_NA                  = '';
+            $scope.amr_IPM                 = '';
+            $scope.amr_C                   = '';
+            $scope.amr_P                   = '';
+            $scope.amr_CL                  = '';
+            $scope.amr_AMC                 = '';
+            $scope.amr_S                   = '';
+
+        };
+
+        $scope.deleteFarm = function() {
+
+            farms.delete($scope.farm_number);
             $scope.farm_number = '';
+
         };
     }
 ]);
