@@ -74,6 +74,126 @@
             <h1> <i class="em em-tractor"></i> : {{farm.farm_number}} </h1>
         </div>
 
+        <h3> Farm Overview <i class="em em-house"></i> </h3>
+        <!-- <div class="container"> -->
+          <table class="table table-hover table-bordered">
+            <tbody>
+
+              <tr>
+                <td>Farm Number</td>
+                <td>{{farm.farm_number}}</td>
+              </tr>
+
+              <tr>
+                <td>Number of Cows</td>
+                <td>{{farm.number_cows}}</td>
+              </tr>
+
+              <tr>
+                <td>Number of Samples Tested</td>
+                <td>{{farm.number_samples_tested}}</td>
+              </tr>
+
+              <tr>
+                <td>Total Isolate Samples</td>
+                <td>{{farm.isolates_samples}}</td>
+              </tr>
+
+              <tr>
+                <td>Number of ESBL Isolates</td>
+                <td>{{farm.esbl_isolates}}</td>
+              </tr>
+
+              <tr>
+                <td>Number of Multidrug Resistant Isolates</td>
+                <td>{{farm.multidrug_res_isolates}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br> <br>
+
+        <h3> AMR Data <i class="em em-pill"></i> </h3>
+
+        <h4> The percentage of isolates have resistance to the particular antimicrobial </h4>
+        <!-- <div class="container"> -->
+          <table class="table table-hover table-bordered">
+            <tbody>
+
+                <tr>
+                    <td> SXT - trimethoprim / sulfamethoxazole </td>
+                    <td>{{farm.amr_SXT}}</td>
+                </tr>
+
+                <tr>
+                    <td> CAZ - ceftazidime, 3rd gen cef </td>
+                    <td>{{farm.amr_CAZ}}</td>
+                </tr>
+
+                <tr>
+                    <td> TE  - tetracycline </td>
+                    <td>{{farm.amr_TE}}</td>
+                </tr>
+
+                <tr>
+                    <td> EFT - ceftiofur, 3rd gen cef </td>
+                    <td>{{farm.amr_EFT}}</td>
+                </tr>
+
+                <tr>
+                    <td> CIP - ciprofloxacin </td>
+                    <td>{{farm.amr_CIP}}</td>
+                </tr>
+
+                <tr>
+                    <td> CTX - ceftriaxone, 3rd gen cef </td>
+                    <td>{{farm.amr_CTX}}</td>
+                </tr>
+
+                <tr>
+                    <td> FOX - cefoxitin, 2nd gen cef </td>
+                    <td>{{farm.amr_FOX}}</td>
+                </tr>
+
+                <tr>
+                    <td> AML - amoxicillin </td>
+                    <td>{{farm.amr_AML}}</td>
+                </tr>
+
+                <tr>
+                    <td> NA  - fluroquinolone </td>
+                    <td>{{farm.amr_NA}}</td>
+                </tr>
+
+                <tr>
+                    <td> IPM - imipenem </td>
+                    <td>{{farm.amr_IPM}}</td>
+                </tr>
+
+                <tr>
+                    <td> C   - chloramphenicol </td>
+                    <td>{{farm.amr_C}}</td>
+                </tr>
+
+                <tr>
+                    <td> P   - penicillin </td>
+                    <td>{{farm.amr_P}}</td>
+                </tr>
+
+                <tr>
+                    <td> CL  - cephalexin, 1st gen cef </td>
+                    <td>{{farm.amr_CL}}</td>
+                </tr>
+
+                <tr>
+                    <td> AMC - amoxicillin clavulanate </td>
+                    <td> {{farm.amr_AMC}}</td>
+                </tr>
+
+            </tbody>
+          </table>
+        <!-- </div> -->
+
     </script>
 
 </body>
