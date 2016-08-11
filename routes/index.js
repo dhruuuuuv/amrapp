@@ -15,7 +15,7 @@ router.get('/farms', function(req, res, next) {
 
         res.json(farms);
     });
-};
+});
 
 router.post('/farms', function(req, res, next) {
 
