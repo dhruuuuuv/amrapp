@@ -83,7 +83,7 @@ app.controller('MainCtrl', [
                 return;
             }
 
-            farm.create({
+            farms.create({
                 farm_number: $scope.farm_number
             });
 
@@ -96,7 +96,7 @@ app.controller('FarmsCtrl', [
     '$scope',
     'farms',
     'farm',
-    function($scope, farms) {
+    function($scope, farms, farm) {
         $scope.farm = farm;
 
         $scope.tagline = 'I am a test farm.';

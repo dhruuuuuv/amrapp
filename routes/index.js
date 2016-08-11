@@ -21,26 +21,26 @@ router.post('/farms', function(req, res, next) {
 
     var farm = new Farm(); //new farm model instance
     farm.farm_number = req.body.farm_number;
-    // farm.number_cows = req.body.number_cows;
-    // farm.number_samples_tested = req.body.number_samples_tested;
-    // farm.isolates_samples = req.body.isolates_samples;
-    // farm.esbl_isolates = req.body.esbl_isolates;
-    // farm.multidrug_res_isolates = req.body.multidrug_res_isolates;
-    // farm.amr_SXT = req.body.amr_SXT;
-    // farm.amr_CAZ = req.body.amr_CAZ;
-    // farm.amr_TE = req.body.amr_TE;
-    // farm.amr_EFT = req.body.amr_EFT;
-    // farm.amr_CIP = req.body.amr_CIP;
-    // farm.amr_CTX = req.body.amr_CTX;
-    // farm.amr_FOX = req.body.amr_FOX;
-    // farm.amr_AML = req.body.amr_AML;
-    // farm.amr_NA = req.body.amr_NA;
-    // farm.amr_IPM = req.body.amr_IPM;
-    // farm.amr_C = req.body.amr_C;
-    // farm.amr_P = req.body.amr_P;
-    // farm.amr_CL = req.body.amr_CL;
-    // farm.amr_AMC = req.body.amr_AMC;
-    // farm.amr_S = req.body.amr_S;
+    farm.number_cows = req.body.number_cows;
+    farm.number_samples_tested = req.body.number_samples_tested;
+    farm.isolates_samples = req.body.isolates_samples;
+    farm.esbl_isolates = req.body.esbl_isolates;
+    farm.multidrug_res_isolates = req.body.multidrug_res_isolates;
+    farm.amr_SXT = req.body.amr_SXT;
+    farm.amr_CAZ = req.body.amr_CAZ;
+    farm.amr_TE = req.body.amr_TE;
+    farm.amr_EFT = req.body.amr_EFT;
+    farm.amr_CIP = req.body.amr_CIP;
+    farm.amr_CTX = req.body.amr_CTX;
+    farm.amr_FOX = req.body.amr_FOX;
+    farm.amr_AML = req.body.amr_AML;
+    farm.amr_NA = req.body.amr_NA;
+    farm.amr_IPM = req.body.amr_IPM;
+    farm.amr_C = req.body.amr_C;
+    farm.amr_P = req.body.amr_P;
+    farm.amr_CL = req.body.amr_CL;
+    farm.amr_AMC = req.body.amr_AMC;
+    farm.amr_S = req.body.amr_S;
 
     farm.save(function(err, farm){
         if (err) {
