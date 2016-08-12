@@ -24,9 +24,9 @@ var FarmSchema  = new mongoose.Schema({
     amr_S                   : {type: Number, default: 0}
 });
 
-FarmSchema.methods.deleteFarm = function(cb) {
-    this.number_cows += 1;
-    this.save(cb);
-}
+// FarmSchema.methods.deleteFarm = function(cb) {
+//     this.number_cows += 1;
+//     this.save(cb);
+// }
 
 mongoose.model('Farm', FarmSchema);
