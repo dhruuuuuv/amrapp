@@ -104,13 +104,13 @@ router.put('/farms/:farm_number', function(req, res, next) {
 });
 
 router.delete('/farms/:farm_number', function(req, res, next) {
-    Farm.findOne({ 'farm_number' : req.params.farm_number }, function(err, farm), function(err, farm) {
-        if (err) {
-            return next(err);
-        }
-
-        res.json({message: 'successfully deleted farm' });
-    });
+    // Farm.findOne({ 'farm_number' : req.params.farm_number }, function(err, farm), function(err, farm) {
+    //     if (err) {
+    //         return next(err);
+    //     }
+    //
+    //     res.json({message: 'successfully deleted farm' });
+    // });
 });
 
 //add more details from router
