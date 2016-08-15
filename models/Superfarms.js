@@ -16,7 +16,7 @@ var mongoose    = require('mongoose');
 // });
 
 var Cows  = new mongoose.Schema({
-    _farm                   : {type: Number, ref: Farm},
+    _farm                   : {type: Number, ref: 'Farm'},
     animal_id               : {type: Number, default: 0},
     parity                  : {type: Number, default: 0},
     latest_calving          : {type: Number, default: 0},
@@ -26,7 +26,7 @@ var Cows  = new mongoose.Schema({
 
 var Superfarms  = new mongoose.Schema({
     farm_number             : {type: Number, default: 0},
-    cows                    : [{type: Schema.Types.ObjectId, ref 'Cow'}],
+    cows                    : [{type: mongoose.Schema.Types.ObjectId, ref: 'Cow'}],
     questionnaire           : [
         { question: String }, { answer: Number, default: -1}
     ]
