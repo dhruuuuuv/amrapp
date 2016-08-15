@@ -31,7 +31,7 @@ app.config([
             })
 
             .state('cows', {
-                url: '/superfarms/{farm_number}/cows',
+                url: '/superfarms/{farm_number}/{cows.animal_id}',
                 templateUrl: '/cows.html',
                 controller: 'CowsCtrl'
             })
@@ -167,6 +167,17 @@ app.controller('SuperfarmsCtrl', [
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
 
+        $scope.tagline = 'I am a test superfarm.';
+    }
+]);
+
+app.controller('CowsCtrl', [
+    '$scope',
+    'superfarms',
+    'superfarm',
+    function($scope, superfarms, superfarm) {
+        $scope.superfarm = superfarm;
+        $scope.cows = superfarm.cows;
         $scope.tagline = 'I am a test superfarm.';
     }
 ]);

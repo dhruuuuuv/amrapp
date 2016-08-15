@@ -57,24 +57,24 @@ router.get('/superfarms/:farm_number', function(req, res, next) {
 });
 
 // route to update a farm
-router.put('/superfarms/:farm_number', function(req, res, next) {
-
-    Superfarm.findOne({ 'farm_number' : req.params.farm_number }, function(err, superfarm) {
-        if (err) {
-            return (next(err));
-        }
-
-        console.log("updates working but nothing happening");
-
-        superfarm.save(function(err, superfarm) {
-            if (err) {
-                return next(err);
-            }
-
-            res.json(superfarm);
-        });
-    });
-});
+// router.put('/superfarms/:farm_number', function(req, res, next) {
+//
+//     Superfarm.findOne({ 'farm_number' : req.params.farm_number }, function(err, superfarm) {
+//         if (err) {
+//             return (next(err));
+//         }
+//
+//         console.log("updates working but nothing happening");
+//
+//         superfarm.save(function(err, superfarm) {
+//             if (err) {
+//                 return next(err);
+//             }
+//
+//             res.json(superfarm);
+//         });
+//     });
+// });
 
 // router.delete('/superfarms/:farm_number', function(req, res, next) {
 //     // Farm.findOne({ 'farm_number' : req.params.farm_number }, function(err, farm), function(err, farm) {
@@ -86,17 +86,48 @@ router.put('/superfarms/:farm_number', function(req, res, next) {
 //     // });
 // });
 //
-// router.get('/superfarms/:farm_number/cows', function(req, res, next) {
-//     // req.superfarm.populate('')
-//     // res.json(post);
-//     Superfarm.findOne({ 'farm_number' : req.params.farm_number }, function(err, superfarm) {
-//         if (err) {
-//             return (next(err));
-//         }
-//
-//         res.json(superfarm);
-//     });
-// });
+router.get('/superfarms/:farm_number/:animal_id', function(req, res, next) {
+    // req.superfarm.populate('')
+    // res.json(post);
+    // Superfarm.findOne({ 'cows.animal_id' : req.params.animal_id }, function(err, superfarm) {
+    //     if (err) {
+    //         return (next(err));
+    //     }
+    //
+    //         res.json(superfarm);
+    //
+    // });
+
+    console.log("entered field");
+    console.log(req.params.animal_id);
+
+    // Superfarm.aggregate([
+    //     {"$match" : {farm_number : req.params.farm_number}}
+        // {"$unwind" : "$cows"},
+        // {"$match" : { "cows.animal_id" : req.params.animal_id}},
+    //     // {"$project" : {farm: "$"}}
+    // Superfarm.find({ "farm_number" : 2 }
+    // , function(err, cow) {
+    //     if (err) {
+    //         return (next(err));
+    //         console.log("error happening");
+    //     }
+
+    Superfarm.findOne(
+        { 'cows' : {"$elemMatch" : {'animal_id' : req.params.animal_id } } },
+        {'cows.$' : 1},
+        function(err, superfarm) {
+            if (err) {
+                return (next(err));
+            }
+
+            res.json(superfarm);
+    });
+
+        // console.log(JSON.stringify(Superfarm.find({ "farm_number" : 2 })));
+        // res.json(cow);
+    // });
+});
 
 //add more details from router
 
