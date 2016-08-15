@@ -15,18 +15,23 @@ var mongoose    = require('mongoose');
 //     isolates                : [Isolates]
 // });
 
-var Cows  = new mongoose.Schema({
-    _superfarm              : {type: Number, ref: 'Superfarm'},
-    animal_id               : {type: Number, default: 0},
-    parity                  : {type: Number, default: 0},
-    latest_calving          : {type: Number, default: 0},
-    latest_calving_days     : {type: Number, default: 0},
-    // samples                 : [Samples]
-});
+// var Cows  = new mongoose.Schema({
+//     _superfarm              : {type: Number, ref: 'Superfarm'},
+//     animal_id               : {type: Number, default: 0},
+//     parity                  : {type: Number, default: 0},
+//     latest_calving          : {type: Number, default: 0},
+//     latest_calving_days     : {type: Number, default: 0},
+//     // samples                 : [Samples]
+// });
 
 var Superfarms  = new mongoose.Schema({
     farm_number             : {type: Number, default: 0},
-    cows                    : [{type: mongoose.Schema.Types.ObjectId, ref: 'Cow'}],
+    cows                    : [ {
+        animal_id               : {type: Number, default: 0},
+        parity                  : {type: Number, default: 0},
+        latest_calving          : {type: Number, default: 0},
+        latest_calving_days     : {type: Number, default: 0},
+    }],
     questionnaire           : [
         { question: String }, { answer: Number, default: -1}
     ]
@@ -38,6 +43,6 @@ var Superfarms  = new mongoose.Schema({
 // }
 
 mongoose.model('Superfarm', Superfarms);
-mongoose.model('Cow', Cows);
+// mongoose.model('Cow', Cows);
 // mongoose.model('Sample', Samples);
 // mongoose.model('Isolate', Isolates);

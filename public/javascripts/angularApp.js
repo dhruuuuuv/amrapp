@@ -141,6 +141,13 @@ app.controller('MainCtrl', [
 
         };
 
+        $scope.countCows = function() {
+
+            superfarms.delete($scope.farm_number);
+            $scope.farm_number = '';
+
+        };
+
         $scope.deleteSuperfarm = function() {
 
             superfarms.delete($scope.farm_number);

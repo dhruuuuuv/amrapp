@@ -159,7 +159,19 @@
                 <td>{{farm.multidrug_res_isolates}}</td>
               </tr> -->
 
-              <tr ng-repeat="(key, value) in superfarm">
+              <tr>
+                  <td> Numbr of Cows </td> <td> {{superfarm.cows.length}} </td>
+              </tr>
+
+          </tbody>
+        </table>
+
+              <br><br>
+
+          <table class="table table-hover table-bordered" ng-repeat="cow in superfarm.cows">
+            <tbody>
+
+              <tr ng-repeat="(key, value) in cow">
                   <td> {{key}} </td> <td> {{value}} </td>
               </tr>
 
