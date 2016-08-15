@@ -28,7 +28,13 @@ app.config([
                         return superfarms.get($stateParams.farm_number);
                     }]
                 }
-            });
+            })
+
+            .state('cows', {
+                url: '/superfarms/{farm_number}/cows',
+                templateUrl: '/cows.html',
+                controller: 'CowsCtrl'
+            })
 
             $urlRouterProvider.otherwise('home');
     }

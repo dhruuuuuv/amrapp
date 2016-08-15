@@ -13,7 +13,7 @@ router.get('/superfarms', function(req, res, next) {
     Superfarm.find(function(err, superfarms){
         if(err) {return next(err); }
 
-        superfarms.populate('cows');
+        // superfarms.populate('cows');
 
         res.json(superfarms);
     });
@@ -99,7 +99,7 @@ router.get('/superfarms/:farm_number', function(req, res, next) {
 // });
 //
 // router.get('/superfarms/:farm_number/cows', function(req, res, next) {
-//     // req.post.populate('')
+//     // req.superfarm.populate('')
 //     // res.json(post);
 //     Superfarm.findOne({ 'farm_number' : req.params.farm_number }, function(err, superfarm) {
 //         if (err) {
