@@ -24,7 +24,7 @@ app.config([
                 templateUrl: '/superfarms.html',
                 controller: 'SuperfarmsCtrl',
                 resolve: {
-                    farm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
+                    superfarm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
                         return superfarms.get($stateParams.farm_number);
                     }]
                 }

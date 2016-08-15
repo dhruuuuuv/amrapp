@@ -16,7 +16,7 @@ var mongoose    = require('mongoose');
 // });
 
 var Cows  = new mongoose.Schema({
-    _farm                   : {type: Number, ref: 'Farm'},
+    _superfarm              : {type: Number, ref: 'Superfarm'},
     animal_id               : {type: Number, default: 0},
     parity                  : {type: Number, default: 0},
     latest_calving          : {type: Number, default: 0},
