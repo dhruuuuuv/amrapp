@@ -7,8 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 //room of requirements
-require('./models/Farms');
-
+require('./models/Superfarms');
 
 mongoose.connect('mongodb://dhruv:amr@ds015995.mlab.com:15995/cowllection');
 

@@ -40,10 +40,10 @@
 
             <h3> Farm Numbers: </h3>
 
-            <div ng-repeat="farm in farms | orderBy: '-farm_number'">
+            <div ng-repeat="superfarm in superfarms | orderBy: '-farm_number'">
 
                 <span style="font-size:20px; margin-left:10px;">
-                        <a href="#/farms/{{farm.farm_number}}">
+                        <a href="#/superfarms/{{superfarm.farm_number}}">
                             <i class="em em-tractor"></i> Farm Number: {{ farm.farm_number }}
                         </a>
                 </span>

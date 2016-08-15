@@ -13,19 +13,19 @@ app.config([
                 templateUrl: '/home.html',
                 controller: 'MainCtrl',
                 resolve: {
-                    farmPromise: ['farms', function(farms) {
-                        return farms.getAll();
+                    farmPromise: ['superfarms', function(superfarms) {
+                        return superfarms.getAll();
                     }]
                 }
             })
 
-            .state('farms', {
-                url: '/farms/{farm_number}',
-                templateUrl: '/farms.html',
-                controller: 'FarmsCtrl',
+            .state('superfarms', {
+                url: '/superfarms/{farm_number}',
+                templateUrl: '/superfarms.html',
+                controller: 'SuperfarmsCtrl',
                 resolve: {
-                    farm: ['$stateParams', 'farms', function($stateParams, farms) {
-                        return farms.get($stateParams.farm_number);
+                    farm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
+                        return superfarms.get($stateParams.farm_number);
                     }]
                 }
             });
@@ -35,35 +35,35 @@ app.config([
 ]);
 
 //farm service
-app.factory('farms', ['$http',
+app.factory('superfarms', ['$http',
     function($http){
         //service body
 
         var o = {
-            farms: []
+            superfarms: []
         };
 
         o.getAll = function() {
-            return $http.get('/farms').success(function(data){
-                angular.copy(data, o.farms);
+            return $http.get('/superfarms').success(function(data){
+                angular.copy(data, o.superfarms);
             });
         };
 
-        o.create = function(farm) {
-            return $http.post('/farms', farm).success(function(data){
-                o.farms.push(data);
+        o.create = function(superfarm) {
+            return $http.post('/superfarms', superfarm).success(function(data){
+                o.superfarms.push(data);
             });
         };
 
         o.get = function(farm_number) {
-            return $http.get('/farms/' + farm_number).then(function(res){
+            return $http.get('/superfarms/' + farm_number).then(function(res){
                 return res.data;
             });
         };
 
         o.delete = function(farm_number) {
-            return $http.delete('/farms/' + farm_number).success(function(data){
-                console.log('deleted farm id ' + data);
+            return $http.delete('/superfarms/' + farm_number).success(function(data){
+                console.log('deleted superfarm id ' + data);
             });
         }
 
@@ -73,82 +73,84 @@ app.factory('farms', ['$http',
 
 app.controller('MainCtrl', [
     '$scope',
-    'farms',
-    function($scope, farms) {
+    'superfarms',
+    function($scope, superfarms) {
         $scope.test = 'Hello world!';
-        $scope.farms = farms.farms;
+        $scope.superfarms = superfarms.superfarms;
 
-        $scope.addFarm = function() {
-            if (!$scope.farm_number || $scope.farm_number === '' ) {
+        $scope.addSuperfarm = function() {
+            if (!$scope.farm_number || $scope.farm_number === ''
+                // check how to check that value is unique
+            ) {
                 return;
             }
 
-            farms.create({
+            superfarms.create({
                 // farm_number: $scope.farm_number
                 farm_number             : $scope.farm_number,
-                number_cows             : $scope.number_cows,
-                number_samples_tested   : $scope.number_samples_tested,
-                isolates_samples        : $scope.isolates_samples,
-                esbl_isolates           : $scope.esbl_isolates,
-                multidrug_res_isolates  : $scope.multidrug_res_isolates,
-                amr_SXT                 : $scope.amr_SXT,
-                amr_CAZ                 : $scope.amr_CAZ,
-                amr_TE                  : $scope.amr_TE,
-                amr_EFT                 : $scope.amr_EFT,
-                amr_CIP                 : $scope.amr_CIP,
-                amr_CTX                 : $scope.amr_CTX,
-                amr_FOX                 : $scope.amr_FOX,
-                amr_AML                 : $scope.amr_AML,
-                amr_NA                  : $scope.amr_NA,
-                amr_IPM                 : $scope.amr_IPM,
-                amr_C                   : $scope.amr_C,
-                amr_P                   : $scope.amr_P,
-                amr_CL                  : $scope.amr_CL,
-                amr_AMC                 : $scope.amr_AMC,
-                amr_S                   : $scope.amr_S
+                // number_cows             : $scope.number_cows,
+                // number_samples_tested   : $scope.number_samples_tested,
+                // isolates_samples        : $scope.isolates_samples,
+                // esbl_isolates           : $scope.esbl_isolates,
+                // multidrug_res_isolates  : $scope.multidrug_res_isolates,
+                // amr_SXT                 : $scope.amr_SXT,
+                // amr_CAZ                 : $scope.amr_CAZ,
+                // amr_TE                  : $scope.amr_TE,
+                // amr_EFT                 : $scope.amr_EFT,
+                // amr_CIP                 : $scope.amr_CIP,
+                // amr_CTX                 : $scope.amr_CTX,
+                // amr_FOX                 : $scope.amr_FOX,
+                // amr_AML                 : $scope.amr_AML,
+                // amr_NA                  : $scope.amr_NA,
+                // amr_IPM                 : $scope.amr_IPM,
+                // amr_C                   : $scope.amr_C,
+                // amr_P                   : $scope.amr_P,
+                // amr_CL                  : $scope.amr_CL,
+                // amr_AMC                 : $scope.amr_AMC,
+                // amr_S                   : $scope.amr_S
             });
 
             // $scope.farm_number = '';
             $scope.farm_number             = '';
-            $scope.number_cows             = '';
-            $scope.number_samples_tested   = '';
-            $scope.isolates_samples        = '';
-            $scope.esbl_isolates           = '';
-            $scope.multidrug_res_isolates  = '';
-            $scope.amr_SXT                 = '';
-            $scope.amr_CAZ                 = '';
-            $scope.amr_TE                  = '';
-            $scope.amr_EFT                 = '';
-            $scope.amr_CIP                 = '';
-            $scope.amr_CTX                 = '';
-            $scope.amr_FOX                 = '';
-            $scope.amr_AML                 = '';
-            $scope.amr_NA                  = '';
-            $scope.amr_IPM                 = '';
-            $scope.amr_C                   = '';
-            $scope.amr_P                   = '';
-            $scope.amr_CL                  = '';
-            $scope.amr_AMC                 = '';
-            $scope.amr_S                   = '';
+            // $scope.number_cows             = '';
+            // $scope.number_samples_tested   = '';
+            // $scope.isolates_samples        = '';
+            // $scope.esbl_isolates           = '';
+            // $scope.multidrug_res_isolates  = '';
+            // $scope.amr_SXT                 = '';
+            // $scope.amr_CAZ                 = '';
+            // $scope.amr_TE                  = '';
+            // $scope.amr_EFT                 = '';
+            // $scope.amr_CIP                 = '';
+            // $scope.amr_CTX                 = '';
+            // $scope.amr_FOX                 = '';
+            // $scope.amr_AML                 = '';
+            // $scope.amr_NA                  = '';
+            // $scope.amr_IPM                 = '';
+            // $scope.amr_C                   = '';
+            // $scope.amr_P                   = '';
+            // $scope.amr_CL                  = '';
+            // $scope.amr_AMC                 = '';
+            // $scope.amr_S                   = '';
 
         };
 
-        $scope.deleteFarm = function() {
+        $scope.deleteSuperfarm = function() {
 
-            farms.delete($scope.farm_number);
+            superfarms.delete($scope.farm_number);
             $scope.farm_number = '';
 
         };
     }
 ]);
 
-app.controller('FarmsCtrl', [
+app.controller('SuperfarmsCtrl', [
     '$scope',
-    'farms',
-    'farm',
-    function($scope, farms, farm) {
-        $scope.farm = farm;
+    'superfarms',
+    'superfarm',
+    function($scope, superfarms, superfarm) {
+        $scope.superfarm = superfarm;
 
-        $scope.tagline = 'I am a test farm.';
+        $scope.tagline = 'I am a test superfarm.';
     }
 ]);
