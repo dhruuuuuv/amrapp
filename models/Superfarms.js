@@ -25,7 +25,7 @@ var mongoose    = require('mongoose');
 // });
 
 var Superfarms  = new mongoose.Schema({
-    farm_number             : {type: Number, default: 0},
+    farm_number             : {type: Number, default: 0, unique: true, dropDups: true},
     cows                    : [ {
         animal_id               : {type: Number, default: 0},
         parity                  : {type: Number, default: 0},

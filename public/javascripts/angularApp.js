@@ -84,11 +84,21 @@ app.controller('MainCtrl', [
         $scope.test = 'Hello world!';
         $scope.superfarms = superfarms.superfarms;
 
+
         $scope.addSuperfarm = function() {
+
+            var i = 0;
+
             if (!$scope.farm_number || $scope.farm_number === ''
-                // check how to check that value is unique
             ) {
                 return;
+            }
+
+            for (i; i < $scope.superfarms.length; i++) {
+                if ($scope.superfarms[i].farm_number == $scope.farm_number ) {
+                    return 0;
+                    console.log("duplicate");
+                }
             }
 
             superfarms.create({
@@ -138,13 +148,6 @@ app.controller('MainCtrl', [
             // $scope.amr_CL                  = '';
             // $scope.amr_AMC                 = '';
             // $scope.amr_S                   = '';
-
-        };
-
-        $scope.countCows = function() {
-
-            superfarms.delete($scope.farm_number);
-            $scope.farm_number = '';
 
         };
 

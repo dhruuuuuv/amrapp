@@ -21,6 +21,15 @@ router.get('/superfarms', function(req, res, next) {
 
 router.post('/superfarms', function(req, res, next) {
 
+    Superfarm.findOne({ 'farm_number' : req.params.farm_number }, function(err, superfarm) {
+        if (err) {
+            return (next(err));
+        }
+
+        console.log("farm already exists");
+        return;
+        });
+
     var superfarm = new Superfarm(); //new farm model instance
     superfarm.farm_number = req.body.farm_number;
     superfarm.number_cows = req.body.number_cows;
@@ -34,25 +43,6 @@ router.post('/superfarms', function(req, res, next) {
     });
 });
 
-
-//preload post using mogoose query fn
-// router.param('farm', function(req, res, next, id) {
-//     var query = Farm.findById(id);
-//
-//     query.exec(function (err, post) {
-//         if (err) {
-//             return next(err);
-//         }
-//
-//         if (!post) {
-//             return next(new Error('can\'t find farm'));
-//         }
-//
-//         req.farm = farm;
-//         return(next);
-//     });
-// });
-
 //route to get a single farm
 router.get('/superfarms/:farm_number', function(req, res, next) {
     // req.post.populate('')
@@ -62,32 +52,30 @@ router.get('/superfarms/:farm_number', function(req, res, next) {
             return (next(err));
         }
 
-        superfarm.populate('cows');
-
         res.json(superfarm);
     });
 });
 
-//route to update a farm
-// router.put('/superfarms/:farm_number', function(req, res, next) {
-//
-//     Superfarm.findOne({ 'farm_number' : req.params.farm_number }, function(err, superfarm) {
-//         if (err) {
-//             return (next(err));
-//         }
-//
-//         console.log("updates working but nothing happening");
-//
-//         superfarm.save(function(err, superfarm) {
-//             if (err) {
-//                 return next(err);
-//             }
-//
-//             res.json(superfarm);
-//         });
-//     });
-// });
-//
+// route to update a farm
+router.put('/superfarms/:farm_number', function(req, res, next) {
+
+    Superfarm.findOne({ 'farm_number' : req.params.farm_number }, function(err, superfarm) {
+        if (err) {
+            return (next(err));
+        }
+
+        console.log("updates working but nothing happening");
+
+        superfarm.save(function(err, superfarm) {
+            if (err) {
+                return next(err);
+            }
+
+            res.json(superfarm);
+        });
+    });
+});
+
 // router.delete('/superfarms/:farm_number', function(req, res, next) {
 //     // Farm.findOne({ 'farm_number' : req.params.farm_number }, function(err, farm), function(err, farm) {
 //     //     if (err) {
