@@ -14,7 +14,7 @@ app.config([
                 controller: 'MainCtrl',
                 resolve: {
                     farmPromise: ['superfarms', function(superfarms) {
-                        return superfarms.getAll();
+                        return superfarms.getAllFarms();
                     }]
                 }
             })
@@ -25,16 +25,21 @@ app.config([
                 controller: 'SuperfarmsCtrl',
                 resolve: {
                     superfarm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
-                        return superfarms.get($stateParams.farm_number);
+                        return superfarms.getFarm($stateParams.farm_number);
                     }]
                 }
             })
 
-            .state('cows', {
+            .state('superfarms.cows', {
                 url: '/superfarms/{farm_number}/{cows.animal_id}',
                 templateUrl: '/cows.html',
-                controller: 'CowsCtrl'
-            })
+                controller: 'CowsCtrl',
+                resolve: {
+                    superfarm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
+                        return (superfarms.getCow($stateParams.farm_number, $stateParams.animal_id);
+                    }]
+                }
+            });
 
             $urlRouterProvider.otherwise('home');
     }
@@ -46,28 +51,34 @@ app.factory('superfarms', ['$http',
         //service body
 
         var o = {
-            superfarms: []
+            superfarms: [],
         };
 
-        o.getAll = function() {
+        o.getAllFarms = function() {
             return $http.get('/superfarms').success(function(data){
                 angular.copy(data, o.superfarms);
             });
         };
 
-        o.create = function(superfarm) {
+        o.createFarm = function(superfarm) {
             return $http.post('/superfarms', superfarm).success(function(data){
                 o.superfarms.push(data);
             });
         };
 
-        o.get = function(farm_number) {
+        o.getFarm = function(farm_number) {
             return $http.get('/superfarms/' + farm_number).then(function(res){
                 return res.data;
             });
         };
 
-        o.delete = function(farm_number) {
+        o.getCow = function(farm_number, animal_id) {
+            return $http.get('/superfarms' + farm_number + '/' + animal_id).then(function(res){
+                return res.data;
+            });
+        };
+
+        o.deleteFarm = function(farm_number) {
             return $http.delete('/superfarms/' + farm_number).success(function(data){
                 console.log('deleted superfarm id ' + data);
             });
@@ -154,8 +165,19 @@ app.controller('MainCtrl', [
         $scope.deleteSuperfarm = function() {
 
             superfarms.delete($scope.farm_number);
-            $scope.farm_number = '';
 
+            var index = 0;
+
+            for (i; i < $scope.superfarms.length; i++) {
+                if ($scope.superfarms[i].farm_number == $scope.farm_number ) {
+                    index = i;
+                    break;
+                }
+            }
+
+            $scope.superfarms.splice(index, 1);
+
+            $scope.farm_number = '';
         };
     }
 ]);
@@ -166,8 +188,7 @@ app.controller('SuperfarmsCtrl', [
     'superfarm',
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
-
-        $scope.tagline = 'I am a test superfarm.';
+        // $scope.cows      = superfarm.cows;
     }
 ]);
 
@@ -177,7 +198,6 @@ app.controller('CowsCtrl', [
     'superfarm',
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
-        $scope.cows = superfarm.cows;
-        $scope.tagline = 'I am a test superfarm.';
+        // $scope.cows = superfarm.cows;
     }
 ]);

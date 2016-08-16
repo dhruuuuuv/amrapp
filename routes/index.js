@@ -101,18 +101,6 @@ router.get('/superfarms/:farm_number/:animal_id', function(req, res, next) {
     console.log("entered field");
     console.log(req.params.animal_id);
 
-    // Superfarm.aggregate([
-    //     {"$match" : {farm_number : req.params.farm_number}}
-        // {"$unwind" : "$cows"},
-        // {"$match" : { "cows.animal_id" : req.params.animal_id}},
-    //     // {"$project" : {farm: "$"}}
-    // Superfarm.find({ "farm_number" : 2 }
-    // , function(err, cow) {
-    //     if (err) {
-    //         return (next(err));
-    //         console.log("error happening");
-    //     }
-
     Superfarm.findOne(
         { 'cows' : {"$elemMatch" : {'animal_id' : req.params.animal_id } } },
         {'cows.$' : 1},
