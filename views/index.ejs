@@ -266,5 +266,42 @@
     </script>
 
 </body>
+<!-- farms template angular -->
+
+    <script type="text/ng-template" id="/cows.html">
+
+        <div class="page-header">
+            <div class="pull-left">
+                <h1> <i class="em em-cow"></i> : {{cow.animal_id}} </h1>
+            </div>
+
+            <div class="pull-right">
+                <a href="/#/home">
+                    <h1> HOME </h1>
+                </a>
+            </div>
+        </div>
+
+        <br><br>
+
+        <h3> Cow Overview <i class="em em-cow2"></i> </h3>
+        <!-- <div class="container"> -->
+          <table class="table table-hover table-bordered">
+            <tbody>
+
+
+              <tr ng-repeat="(key, value) in cow">
+                  <td>{{key}} </td> <td> {{svalue}} </td>
+              </tr>
+
+          </tbody>
+        </table>
+
+
+          <br> <br>
+
+
+    </script>
+
 
 </html>

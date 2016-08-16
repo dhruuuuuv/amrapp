@@ -198,6 +198,6 @@ app.controller('CowsCtrl', [
     'superfarm',
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
-        // $scope.cows = superfarm.cows;
+        $scope.cow = superfarm.cows;
     }
 ]);
