@@ -172,7 +172,7 @@
           <div ng-repeat="cow in superfarm.cows | orderBy: '-cows.animal_id'">
 
               <span style="font-size:20px; margin-left:10px;">
-                      <a href="#/superfarms/{{superfarm.farm_number}}/{{superfarm.animal_id}}">
+                      <a href="#/superfarms/{{superfarm.farm_number}}/{{cow.animal_id}}">
                           <i class="em em-cow"></i> Animal ID: {{ cow.animal_id }}
                       </a>
               </span>
