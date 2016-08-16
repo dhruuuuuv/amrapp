@@ -31,6 +31,16 @@ var Superfarms  = new mongoose.Schema({
         parity                  : {type: Number, default: 0},
         latest_calving          : {type: Number, default: 0},
         latest_calving_days     : {type: Number, default: 0},
+        isolates            : [ {
+            isolate_number      : {type: Number, default: 0},
+            date_sampled        : {type: Number, default: 0},
+            date_sampled_days   : {type: Number, default: 0},
+            DIM_at_sampling     : {type: Number, default: 0},
+            mean_305d_milk      : {type: Number, default: 0},
+            antimicrobial           : [
+                { name: String }, {value : Number, default: 0 }
+            ]
+        }]
     }],
     questionnaire           : [
         { question: String }, { answer: Number, default: -1}
