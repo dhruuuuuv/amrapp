@@ -30,13 +30,16 @@ app.config([
                 }
             })
 
-            .state('superfarms.cows', {
-                url: '^/superfarms/{farm_number}/{cows.animal_id}',
-                templateUrl: '/cows.html',
+            .state('cows', {
+                parent: 'superfarms',
+                url: '/{animal_id}',
+                templateUrl: '/superfarms/cows.html',
                 controller: 'CowsCtrl',
                 resolve: {
                     superfarm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
+                        // console.log($stateParams);
                         return superfarms.getCow($stateParams.farm_number, $stateParams.animal_id);
+
                     }]
                 }
             });
@@ -73,7 +76,7 @@ app.factory('superfarms', ['$http',
         };
 
         o.getCow = function(farm_number, animal_id) {
-            return $http.get('/superfarms' + farm_number + '/' + animal_id).then(function(res){
+            return $http.get('/superfarms/' + farm_number + '/' + animal_id).then(function(res){
                 return res.data;
             });
         };
