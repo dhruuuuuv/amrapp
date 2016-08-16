@@ -31,12 +31,12 @@ app.config([
             })
 
             .state('superfarms.cows', {
-                url: '/superfarms/{farm_number}/{cows.animal_id}',
+                url: '^/superfarms/{farm_number}/{cows.animal_id}',
                 templateUrl: '/cows.html',
                 controller: 'CowsCtrl',
                 resolve: {
                     superfarm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
-                        return (superfarms.getCow($stateParams.farm_number, $stateParams.animal_id);
+                        return superfarms.getCow($stateParams.farm_number, $stateParams.animal_id);
                     }]
                 }
             });

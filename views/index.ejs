@@ -160,7 +160,7 @@
               </tr> -->
 
               <tr>
-                  <td> Numbr of Cows </td> <td> {{superfarm.cows.length}} </td>
+                  <td> Number of Cows </td> <td> {{superfarm.cows.length}} </td>
               </tr>
 
           </tbody>
@@ -168,15 +168,16 @@
 
               <br><br>
 
-          <table class="table table-hover table-bordered" ng-repeat="cow in superfarm.cows">
-            <tbody>
 
-              <tr ng-repeat="(key, value) in cow">
-                  <td> {{key}} </td> <td> {{value}} </td>
-              </tr>
+          <div ng-repeat="cow in superfarm.cows | orderBy: '-cows.animal_id'">
 
-            </tbody>
-          </table>
+              <span style="font-size:20px; margin-left:10px;">
+                      <a href="#/superfarms/{{superfarm.farm_number}}/{{superfarm.animal_id}}">
+                          <i class="em em-cow"></i> Animal ID: {{ cow.animal_id }}
+                      </a>
+              </span>
+
+          </div>
 
           <br> <br>
 
