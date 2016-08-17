@@ -213,7 +213,7 @@ app.controller('SuperfarmsCtrl', [
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
         // console.log(superfarm);
-        // $scope.cows      = superfarm.cows;
+        $scope.cows      = superfarm.cows;
 
         // $scope.$on('$viewContentLoaded', function () {
         //     window.scrollTo(0, 0);
@@ -226,9 +226,9 @@ app.controller('CowsCtrl', [
     'superfarms',
     'superfarm',
     function($scope, superfarms, superfarm) {
-        console.log(superfarm);
+        // console.log(superfarm);
         $scope.superfarm = superfarm;
-        // $scope.cow = superfarm.cows[0];
+        $scope.cow = superfarm.cows[0];
 
 
         $scope.filterCow = function(items) {
