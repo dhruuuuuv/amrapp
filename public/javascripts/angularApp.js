@@ -224,6 +224,7 @@ app.controller('CowsCtrl', [
         $scope.superfarm = superfarm;
         $scope.cow = superfarm.cows[0];
 
+
         $scope.filterCow = function(items) {
             var result = {};
             angular.forEach(items, function(value, key) {
@@ -233,6 +234,7 @@ app.controller('CowsCtrl', [
             });
             return result;
         }
+
     }
 ]);
 

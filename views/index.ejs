@@ -307,6 +307,18 @@
           </tbody>
         </table>
 
+        <br> <br>
+
+        <div ng-repeat="isolate in cow.isolates | orderBy: '-isolates.isolate_number'">
+
+            <span style="font-size:20px; margin-left:10px;">
+                    <a href="#/superfarms/{{superfarm.farm_number}}/{{cow.animal_id}}/{{isolate.isolate_number}}">
+                        <i class="em em-computer"></i> Isolate Number: {{ isolate.isolate_number }}
+                    </a>
+            </span>
+
+        </div>
+
 
           <br> <br>
             <div ui-view></div>
