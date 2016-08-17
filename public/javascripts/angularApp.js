@@ -51,7 +51,8 @@ app.config([
                 controller: 'IsolatesCtrl',
                 resolve: {
                     superfarm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
-                        return superfarms.getCow($stateParams.farm_number, $stateParams.animal_id);
+                        // console.log(superfarms.getIsolate($stateParams.farm_number, $stateParams.animal_id));
+                        return superfarms.getIsolate($stateParams.farm_number, $stateParams.animal_id, $stateParams.isolate_number);
 
                     }]
                 }
@@ -96,7 +97,7 @@ app.factory('superfarms', ['$http',
         };
 
         o.getIsolate = function(farm_number, animal_id, isolate_number) {
-            return $http.get('/superfarms/' + farm_number + '/' + animal_id).then(function(res){
+            return $http.get('/superfarms/' + farm_number + '/' + animal_id + '/' + isolate_number).then(function(res){
                 // o.isolate_number = isolate_number;
                 return res.data;
             });
@@ -255,23 +256,24 @@ app.controller('IsolatesCtrl', [
     'superfarm',
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
-        $scope.cow = superfarm.cows[0];
+        // console.log($scope.superfarm);
+        // $scope.cow = superfarm.cows[0];
 
-        var index = 0;
-
-        // console.log($scope.cow.isolates);
-
-        for (var i = 0; i < $scope.cow.isolates.length; i++) {
-            // console.log(i);
-            if ($scope.cow.isolates[i].isolate_number == $scope.isolate_number ) {
-                // console.log(i);
-                index = i;
-                break;
-            }
-        }
+        // var index = 0;
+        //
+        // // console.log($scope.cow.isolates);
+        //
+        // for (var i = 0; i < $scope.cow.isolates.length; i++) {
+        //     // console.log(i);
+        //     if ($scope.cow.isolates[i].isolate_number == $scope.isolate_number ) {
+        //         // console.log(i);
+        //         index = i;
+        //         break;
+        //     }
+        // }
         // console.log($scope.cow.isolates);
         // console.log(index);
-        $scope.isolate = $scope.cow.isolates[index];
+        $scope.isolate = $scope.superfarm[0].isolates;
         // console.log($scope.isolate);
 
         // $scope.$on('$viewContentLoaded', function () {
