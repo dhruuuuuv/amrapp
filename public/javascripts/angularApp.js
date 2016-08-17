@@ -42,6 +42,19 @@ app.config([
 
                     }]
                 }
+            })
+
+            .state('isolates', {
+                parent: 'cows',
+                url: '/{isolate_number}',
+                templateUrl: '/superfarms/cows/isolates.html',
+                controller: 'IsolatesCtrl',
+                resolve: {
+                    superfarm: ['$stateParams', 'superfarms', function($stateParams, superfarms) {
+                        return superfarms.getCow($stateParams.farm_number, $stateParams.animal_id);
+
+                    }]
+                }
             });
 
             $urlRouterProvider.otherwise('home');
@@ -55,6 +68,7 @@ app.factory('superfarms', ['$http',
 
         var o = {
             superfarms: [],
+            // isolate_number: 0
         };
 
         o.getAllFarms = function() {
@@ -77,6 +91,13 @@ app.factory('superfarms', ['$http',
 
         o.getCow = function(farm_number, animal_id) {
             return $http.get('/superfarms/' + farm_number + '/' + animal_id).then(function(res){
+                return res.data;
+            });
+        };
+
+        o.getIsolate = function(farm_number, animal_id, isolate_number) {
+            return $http.get('/superfarms/' + farm_number + '/' + animal_id).then(function(res){
+                // o.isolate_number = isolate_number;
                 return res.data;
             });
         };
@@ -169,7 +190,7 @@ app.controller('MainCtrl', [
 
             superfarms.delete($scope.farm_number);
 
-            var index = 0;
+            var index, i = 0;
 
             for (i; i < $scope.superfarms.length; i++) {
                 if ($scope.superfarms[i].farm_number == $scope.farm_number ) {
@@ -202,5 +223,43 @@ app.controller('CowsCtrl', [
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
         $scope.cow = superfarm.cows[0];
+
+        $scope.filterCow = function(items) {
+            var result = {};
+            angular.forEach(items, function(value, key) {
+                if (key != "isolates") {
+                    result[key] = value;
+                }
+            });
+            return result;
+        }
+    }
+]);
+
+app.controller('IsolatesCtrl', [
+    '$scope',
+    'superfarms',
+    // 'isolate_number',
+    'superfarm',
+    function($scope, superfarms, superfarm) {
+        $scope.superfarm = superfarm;
+        $scope.cow = superfarm.cows[0];
+
+        var index = 0;
+
+        // console.log($scope.cow.isolates);
+
+        for (var i = 0; i < $scope.cow.isolates.length; i++) {
+            // console.log(i);
+            if ($scope.cow.isolates[i].isolate_number == $scope.isolate_number ) {
+                // console.log(i);
+                index = i;
+                break;
+            }
+        }
+        // console.log($scope.cow.isolates);
+        // console.log(index);
+        $scope.isolate = $scope.cow.isolates[index];
+        // console.log($scope.isolate);
     }
 ]);

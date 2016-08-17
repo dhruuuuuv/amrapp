@@ -86,21 +86,8 @@ router.get('/superfarms/:farm_number', function(req, res, next) {
 //     // });
 // });
 //
+// route to get cow with animal id from farm
 router.get('/superfarms/:farm_number/:animal_id', function(req, res, next) {
-    // req.superfarm.populate('')
-    // res.json(post);
-    // Superfarm.findOne({ 'cows.animal_id' : req.params.animal_id }, function(err, superfarm) {
-    //     if (err) {
-    //         return (next(err));
-    //     }
-    //
-    //         res.json(superfarm);
-    //
-    // });
-
-    // console.log("entered field");
-    // console.log(req.params.animal_id);
-
     Superfarm.findOne(
         { 'cows' : {"$elemMatch" : {'animal_id' : req.params.animal_id } } },
         {'cows.$' : 1},
@@ -111,10 +98,23 @@ router.get('/superfarms/:farm_number/:animal_id', function(req, res, next) {
 
             res.json(superfarm);
     });
+});
 
-        // console.log(JSON.stringify(Superfarm.find({ "farm_number" : 2 })));
-        // res.json(cow);
-    // });
+//route to get isolate from animal id etc.
+router.get('/superfarms/:farm_number/:animal_id/:isolate_number', function(req, res, next) {
+    Superfarm.findOne(
+        { 'cows' : {"$elemMatch" : {'animal_id' : req.params.animal_id } } },
+        { 'cows.$' : 1 },
+        // { 'cows.isolates' : {"$elemMatch" : {'isolate_number' : req.params.isolate_number } } },
+        // { 'cows.isolates.$' : 1 },
+        function(err, superfarm) {
+            if (err) {
+                return (next(err));
+            }
+
+            console.log(superfarm);
+            res.json(superfarm);
+    });
 });
 
 //add more details from router
