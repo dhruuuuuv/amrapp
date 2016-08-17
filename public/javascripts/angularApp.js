@@ -259,25 +259,17 @@ app.controller('IsolatesCtrl', [
         // console.log($scope.superfarm);
         // $scope.cow = superfarm.cows[0];
 
-        // var index = 0;
-        //
-        // // console.log($scope.cow.isolates);
-        //
-        // for (var i = 0; i < $scope.cow.isolates.length; i++) {
-        //     // console.log(i);
-        //     if ($scope.cow.isolates[i].isolate_number == $scope.isolate_number ) {
-        //         // console.log(i);
-        //         index = i;
-        //         break;
-        //     }
-        // }
-        // console.log($scope.cow.isolates);
-        // console.log(index);
         $scope.isolate = $scope.superfarm[0].isolates;
-        // console.log($scope.isolate);
 
-        // $scope.$on('$viewContentLoaded', function () {
-        //     window.scrollTo(50, 50);
-        // });
+        $scope.filterIsolate = function(items) {
+            var result = {};
+            angular.forEach(items, function(value, key) {
+                if (key != "antimicrobials") {
+                    result[key] = value;
+                }
+            });
+            return result;
+        }
+
     }
 ]);
