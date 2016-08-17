@@ -91,12 +91,14 @@ router.get('/superfarms/:farm_number/:animal_id', function(req, res, next) {
     Superfarm.findOne(
         { 'cows' : {"$elemMatch" : {'animal_id' : req.params.animal_id } } },
         {'cows.$' : 1}, { 'farm_number' : 1},
+
         function(err, superfarm) {
             if (err) {
                 return (next(err));
             }
-            superfarm.farm_number = req.params.farm_number;
-            console.log(superfarm);
+
+            // superfarm.farm_number = req.params.farm_number;
+            // console.log(superfarm);
             res.json(superfarm);
     });
 });

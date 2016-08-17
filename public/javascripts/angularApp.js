@@ -212,7 +212,12 @@ app.controller('SuperfarmsCtrl', [
     'superfarm',
     function($scope, superfarms, superfarm) {
         $scope.superfarm = superfarm;
+        // console.log(superfarm);
         // $scope.cows      = superfarm.cows;
+
+        // $scope.$on('$viewContentLoaded', function () {
+        //     window.scrollTo(0, 0);
+        // });
     }
 ]);
 
@@ -221,8 +226,9 @@ app.controller('CowsCtrl', [
     'superfarms',
     'superfarm',
     function($scope, superfarms, superfarm) {
+        console.log(superfarm);
         $scope.superfarm = superfarm;
-        $scope.cow = superfarm.cows[0];
+        // $scope.cow = superfarm.cows[0];
 
 
         $scope.filterCow = function(items) {
@@ -234,6 +240,10 @@ app.controller('CowsCtrl', [
             });
             return result;
         }
+        //
+        // $scope.$on('$viewContentLoaded', function () {
+        //     window.scrollTo(50, 50);
+        // });
 
     }
 ]);
@@ -263,5 +273,9 @@ app.controller('IsolatesCtrl', [
         // console.log(index);
         $scope.isolate = $scope.cow.isolates[index];
         // console.log($scope.isolate);
+
+        // $scope.$on('$viewContentLoaded', function () {
+        //     window.scrollTo(50, 50);
+        // });
     }
 ]);

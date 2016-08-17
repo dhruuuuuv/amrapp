@@ -25,26 +25,27 @@ var mongoose    = require('mongoose');
 // });
 
 var Superfarms  = new mongoose.Schema({
-    farm_number             : {type: Number, default: 0, unique: true, dropDups: true},
+    farm_number             : {type: Number},
     cows                    : [ {
-        animal_id               : {type: Number, default: 0},
+        animal_id               : {type: String},
         parity                  : {type: Number, default: 0},
         latest_calving          : {type: Number, default: 0},
         latest_calving_days     : {type: Number, default: 0},
         isolates            : [ {
             isolate_number      : {type: Number, default: 0},
+            sample_number       : {type: Number, default: 0},
             date_sampled        : {type: Number, default: 0},
             date_sampled_days   : {type: Number, default: 0},
             DIM_at_sampling     : {type: Number, default: 0},
             mean_305d_milk      : {type: Number, default: 0},
-            antimicrobial           : [
+            antimicrobials           : [
                 { name: String }, {value : Number, default: 0 }
             ]
         }]
     }],
-    questionnaire           : [
-        { question: String }, { answer: Number, default: -1}
-    ]
+    // questionnaire           : [
+    //     { question: String }, { answer: Number, default: -1}
+    // ]
 });
 
 // FarmSchema.methods.deleteFarm = function(cb) {
