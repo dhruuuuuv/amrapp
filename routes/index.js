@@ -107,11 +107,40 @@ router.get('/superfarms/:farm_number/:animal_id', function(req, res, next) {
 
 //route to get isolate from animal id etc.
 router.get('/superfarms/:farm_number/:animal_id/:isolate_number', function(req, res, next) {
-    Superfarm.findOne(
-        { 'cows' : {"$elemMatch" : {'animal_id' : req.params.animal_id } } },
-        { 'cows.$' : 1 }, 'farm_number',
-        // { 'cows.isolates' : {"$elemMatch" : {'isolate_number' : req.params.isolate_number } } },
-        // { 'cows.isolates.$' : 1 },
+    // Superfarm.findOne(
+    //     { 'cows' : {"$elemMatch" : {'animal_id' : req.params.animal_id } } },
+    //     { 'cows.isolates' : {"$elemMatch" : {'isolate_number' : req.params.isolate_number } } },
+    //     { 'cows.isolates.$' : 1 },
+    //     // { 'cows.isolates' : {"$elemMatch" : {'isolate_number' : req.params.isolate_number } } },
+    //     // { 'cows.isolates.$' : 1 },
+    // Match the documents by query
+    Superfarm.aggregate([
+        // { "$match": {
+        //     "cows" : "john.doe@acme.com",
+        //     "groups.name": "group1",
+        //     "groups.contacts.localId": { "$in": [ "c1","c3", null ] },
+        // }},
+
+        // De-normalize nested array
+        { "$unwind": "$cows" },
+        { "$unwind": "$cows.isolates" },
+
+        // Filter the actual array elements as desired
+        { "$match": {
+            "cows.animal_id": req.params.animal_id,
+            "cows.isolates.isolate_number": req.params.isolate_number,
+        }},
+
+        // Group the intermediate result.
+        { "$project": {
+            _id : 0,
+            isolates  : "$cows.isolates",
+            cows      : "$cows"
+        }}
+
+        // Group the final result
+
+    ],
         function(err, superfarm) {
             if (err) {
                 return (next(err));
