@@ -270,6 +270,34 @@ app.controller('CowsCtrl', [
             });
             return result;
         }
+
+        // var count = 0;
+        var resistant = 0;
+
+        // console.log()
+
+        // for (cow in superfarm.cows[0]) {
+            // console.log(superfarm.cows[cow].isolates.length);
+            // console.log(superfarm.cows[0]);
+            // count += superfarm.cows[0].isolates.length;
+
+            for (isolate in superfarm.cows[0].isolates) {
+
+                for (amr in superfarm.cows[0].isolates[isolate].antimicrobials) {
+                    // console.log(superfarm.cows[superfarm.cows[0]].isolates[isolate].antimicrobials[amr].value)
+                    if (!isNaN(parseInt(superfarm.cows[0].isolates[isolate].antimicrobials[amr].value))) {
+                        // console.log(parseInt(superfarm.cows[superfarm.cows[0]].isolates[isolate].antimicrobials[amr].value));
+                        resistant += parseInt(superfarm.cows[0].isolates[isolate].antimicrobials[amr].value)
+                        // console.log(resistant);
+                    }
+                }
+            }
+        // }
+
+        // console.log(resistant);
+
+        // $scope.isolate_number =  count;
+        $scope.isolates_resistant =  resistant;
         //
         // $scope.$on('$viewContentLoaded', function () {
         //     window.scrollTo(50, 50);

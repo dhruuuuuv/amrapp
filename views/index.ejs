@@ -181,6 +181,10 @@
                   <td> Total Number Resistant </td> <td> {{isolates_resistant}} </td>
               </tr>
 
+              <tr>
+                  <td> Percentage Resistant </td> <td> {{(isolates_resistant * 100) / isolate_number | number:2}} </td>
+              </tr>
+
           </tbody>
         </table>
 
@@ -205,88 +209,6 @@
 
           <br>
           <br>
-          <br>
-
-        <!-- <h3> AMR Data <i class="em em-pill"></i> </h3>
-
-        <h4> The percentage of isolates that have resistance to the particular antimicrobial </h4>
-          <table class="table table-hover table-bordered">
-            <tbody>
-
-                <tr>
-                    <td> SXT - trimethoprim / sulfamethoxazole </td>
-                    <td>{{farm.amr_SXT}}</td>
-                </tr>
-
-                <tr>
-                    <td> CAZ - ceftazidime, 3rd gen cef </td>
-                    <td>{{farm.amr_CAZ}}</td>
-                </tr>
-
-                <tr>
-                    <td> TE  - tetracycline </td>
-                    <td>{{farm.amr_TE}}</td>
-                </tr>
-
-                <tr>
-                    <td> EFT - ceftiofur, 3rd gen cef </td>
-                    <td>{{farm.amr_EFT}}</td>
-                </tr>
-
-                <tr>
-                    <td> CIP - ciprofloxacin </td>
-                    <td>{{farm.amr_CIP}}</td>
-                </tr>
-
-                <tr>
-                    <td> CTX - ceftriaxone, 3rd gen cef </td>
-                    <td>{{farm.amr_CTX}}</td>
-                </tr>
-
-                <tr>
-                    <td> FOX - cefoxitin, 2nd gen cef </td>
-                    <td>{{farm.amr_FOX}}</td>
-                </tr>
-
-                <tr>
-                    <td> AML - amoxicillin </td>
-                    <td>{{farm.amr_AML}}</td>
-                </tr>
-
-                <tr>
-                    <td> NA  - fluroquinolone </td>
-                    <td>{{farm.amr_NA}}</td>
-                </tr>
-
-                <tr>
-                    <td> IPM - imipenem </td>
-                    <td>{{farm.amr_IPM}}</td>
-                </tr>
-
-                <tr>
-                    <td> C   - chloramphenicol </td>
-                    <td>{{farm.amr_C}}</td>
-                </tr>
-
-                <tr>
-                    <td> P   - penicillin </td>
-                    <td>{{farm.amr_P}}</td>
-                </tr>
-
-                <tr>
-                    <td> CL  - cephalexin, 1st gen cef </td>
-                    <td>{{farm.amr_CL}}</td>
-                </tr>
-
-                <tr>
-                    <td> AMC - amoxicillin clavulanate </td>
-                    <td> {{farm.amr_AMC}}</td>
-                </tr>
-
-            </tbody>
-          </table>
-
-        <br><br> -->
 
 
     </script>
@@ -311,6 +233,18 @@
         <table class="table table-hover table-bordered">
           <tbody>
               <tr> <td> Number of Isolates </td> <td> {{cow.isolates.length}} </td>
+
+              <!-- <tr>
+                  <td> Total Number of Isolates </td> <td> {{isolate_number}} </td>
+              </tr> -->
+
+              <tr>
+                  <td> Total Number Resistant </td> <td> {{isolates_resistant}} </td>
+              </tr>
+
+              <tr>
+                  <td> Percentage Resistant </td> <td> {{(isolates_resistant * 100) / isolate_number | number:2}} </td>
+              </tr>
           </tbody>
         </table>
 
