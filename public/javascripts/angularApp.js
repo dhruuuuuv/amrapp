@@ -1,4 +1,4 @@
-var app = angular.module('cowllection', ['ui.router']);
+var app = angular.module('cowllection', ['ui.router', 'chart.js']);
 
 //configuration and routes
 app.config([
@@ -219,6 +219,35 @@ app.controller('SuperfarmsCtrl', [
         // $scope.$on('$viewContentLoaded', function () {
         //     window.scrollTo(0, 0);
         // });
+        // $scope.count_isolates = function() {
+
+            var count = 0;
+            var resistant = 0;
+
+            // console.log()
+
+            for (cow in superfarm.cows) {
+                // console.log(superfarm.cows[cow].isolates.length);
+                count += superfarm.cows[cow].isolates.length;
+
+                for (isolate in superfarm.cows[cow].isolates) {
+
+                    for (amr in superfarm.cows[cow].isolates[isolate].antimicrobials) {
+                        // console.log(superfarm.cows[cow].isolates[isolate].antimicrobials[amr].value)
+                        if (!isNaN(parseInt(superfarm.cows[cow].isolates[isolate].antimicrobials[amr].value))) {
+                            // console.log(parseInt(superfarm.cows[cow].isolates[isolate].antimicrobials[amr].value));
+                            resistant += parseInt(superfarm.cows[cow].isolates[isolate].antimicrobials[amr].value)
+                            // console.log(resistant);
+                        }
+                    }
+                }
+            }
+
+            // console.log(resistant);
+
+            $scope.isolate_number =  count;
+            $scope.isolates_resistant =  resistant;
+        // }
     }
 ]);
 
@@ -270,6 +299,37 @@ app.controller('IsolatesCtrl', [
             });
             return result;
         }
+
+        // var data = {"A Key": 34, "Another Key": 16, "Last Key": 10};
+
+        var amr_vals = [],
+            amr_nam = [];
+
+            // console.log($scope.isolate.antimicrobials);
+
+        for (var index in $scope.isolate.antimicrobials){
+
+            value = $scope.isolate.antimicrobials[index].value
+
+            if (value == "" ) {
+                value = "0";
+            }
+
+            value = parseInt(value);
+            //    }
+            //    console.log(data[property]);
+               amr_nam.push($scope.isolate.antimicrobials[index].name);
+               amr_vals.push(value);
+
+            // }
+
+        }
+
+        $scope.amr_vals = amr_vals;
+        $scope.amr_nam = amr_nam;
+
+        // console.log($scope.amr_nam);
+        // console.log($scope.amr_vals);
 
     }
 ]);

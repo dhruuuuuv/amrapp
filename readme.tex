@@ -1,0 +1,91 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\date{}
+
+\begin{document}
+
+\subsection{Synopsis}\label{synopsis}
+
+This project is a prototype for an online database to collect
+information about cows and farms. It relies on the MEAN stack.
+
+This means that it requires Node.js, which can be downloaded from:
+https://nodejs.org/en/download/
+
+\subsection{Installation}\label{installation}
+
+To use: - open a terminal / command prompt, and \texttt{cd} to a
+directory. - type in the command
+\texttt{git\ clone\ https://github.com/dhruuuuuv/amrapp.git} - change
+into the new directory with \texttt{cd\ amrapp} - ensure node is
+installed by typing \texttt{node\ -v}. If it is a version number should
+be displayed. - enter the command \texttt{npm\ start}, and you should be
+greeted with: \texttt{\textgreater{}\ node\ ./bin/www} - in your
+web-browser, type in the address bar \texttt{http://localhost:3000},
+after a while you should be greeted with the cowllection homepage!
+
+\subsection{Usage}\label{usage}
+
+Navigate through the app by clicking on the relevant \textbf{farm
+number}. This should then reveal a \textbf{farm overview} with multiple
+\textbf{animal id}s.
+
+If you click on an animal id, the information about that ID is revealed
+below, so \textbf{scroll down} to reveal the new information about the
+specfic cow.
+
+Each cow has associated isolates, which also by clicking on the relevant
+\textbf{isolate number} will reveal the specific data about that
+isolate.
+
+At any point, click on another \textbf{animal id} to view information
+about that, or another \textbf{isolate number} for that. Click on the
+HOME button to return to the farm overview.
+
+\end{document}

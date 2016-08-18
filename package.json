@@ -6,7 +6,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "angular-chart.js": "^1.0.1",
     "body-parser": "~1.15.1",
+    "chart.js": "file:node_modules/chart.js",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "~2.4.1",
