@@ -271,7 +271,7 @@ app.controller('CowsCtrl', [
             return result;
         }
 
-        // var count = 0;
+        var count = 0;
         var resistant = 0;
 
         // console.log()
@@ -279,7 +279,7 @@ app.controller('CowsCtrl', [
         // for (cow in superfarm.cows[0]) {
             // console.log(superfarm.cows[cow].isolates.length);
             // console.log(superfarm.cows[0]);
-            // count += superfarm.cows[0].isolates.length;
+            count += superfarm.cows[0].isolates.length;
 
             for (isolate in superfarm.cows[0].isolates) {
 
@@ -296,7 +296,7 @@ app.controller('CowsCtrl', [
 
         // console.log(resistant);
 
-        // $scope.isolate_number =  count;
+        $scope.isolate_number =  count;
         $scope.isolates_resistant =  resistant;
         //
         // $scope.$on('$viewContentLoaded', function () {
@@ -330,6 +330,8 @@ app.controller('IsolatesCtrl', [
 
         // var data = {"A Key": 34, "Another Key": 16, "Last Key": 10};
 
+        var resistant = 0;
+
         var amr_vals = [],
             amr_nam = [];
 
@@ -344,6 +346,7 @@ app.controller('IsolatesCtrl', [
             }
 
             value = parseInt(value);
+            resistant += value;
             //    }
             //    console.log(data[property]);
                amr_nam.push($scope.isolate.antimicrobials[index].name);
@@ -355,6 +358,8 @@ app.controller('IsolatesCtrl', [
 
         $scope.amr_vals = amr_vals;
         $scope.amr_nam = amr_nam;
+        $scope.isolates_resistant = resistant;
+        $scope.amr_count = $scope.isolate.antimicrobials.length;
 
         // console.log($scope.amr_nam);
         // console.log($scope.amr_vals);

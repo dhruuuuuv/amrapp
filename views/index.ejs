@@ -245,6 +245,7 @@
               <tr>
                   <td> Percentage Resistant </td> <td> {{(isolates_resistant * 100) / isolate_number | number:2}} </td>
               </tr>
+
           </tbody>
         </table>
 
@@ -310,6 +311,26 @@
 
 
           <br> <br>
+
+          <table class="table table-hover table-bordered">
+            <tbody>
+
+                <tr>
+                    <td> Total Number of Antimicrobials Tested </td> <td> {{amr_count}} </td>
+                </tr>
+
+                <tr>
+                    <td> Total Number Resistant </td> <td> {{isolates_resistant}} </td>
+                </tr>
+
+                <tr>
+                    <td> Percentage Resistant </td> <td> {{(isolates_resistant * 100) / amr_count | number:2}} </td>
+                </tr>
+
+            </tbody>
+          </table>
+
+          <br><br>
 
       <!-- <div class="container"> -->
           <!-- <div class="row"> -->
